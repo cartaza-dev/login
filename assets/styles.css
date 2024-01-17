@@ -1,0 +1,233 @@
+/* Utilizamos los mismos estilos para las paginas de Login, Registro y Olvido_Clave,
+ se añaden otros estilos para estas ùltimas. Se podràn identificar con los comentarios explicativos,
+ y con los !important  añadidos*/
+
+
+/* Establecemos a nivel general margin y padding 0*/
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*Estilos generales del body, como IMAGEN de PAISAJE de FONDO.*/
+body {
+    height: 100vh;
+    /* Establece la altura del body al 100% del viewport height */
+    background-image: url('../assets/images/puesta-sol-misurina.jpg');
+    background-size: cover;
+    /* Cubre completamente el fondo */
+    background-position: center;
+    /* Centra la imagen en el fondo */
+    background-repeat: no-repeat;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*Estilos del contenedor principal, que sobre el body y con RGBA contiene el formulario*/
+.principal_content {
+    width: 40%;
+    height: 100vh;
+    margin: 0px auto;
+    background-color: rgba(104, 100, 100, 0.3);
+}
+
+
+/*Estilos del TITULO "INICIA SESIÒN" */
+.principal_content .titulo {
+    text-align: center;
+    color: white;
+    padding: 70px;
+}
+
+
+
+/* INICIO de estilos del "Olvidaste tu contraseña" y "registrate" */
+.principal_content .info_redireccion {
+    margin-top: 80px;
+}
+
+.principal_content .info_redireccion p,
+.principal_content .info_redireccion_1 p {
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+}
+
+.principal_content .info_redireccion p a,
+.principal_content .info_redireccion_1 p a {
+    color: white;
+}
+
+/* FIN de estilos del "Olvidaste tu contraseña" y "registrate" */
+
+
+/* Inicio estilos del formulario de inicio de sesion */
+.form_login {
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}
+
+/* Oculta el icono del ojo para mostrar/ocultar la contraseña */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-webkit-eye,
+input[type="password"]::-webkit-reveal {
+  display: none;
+}
+
+
+/*Estilos del boton ingresar*/
+.form_login input[type="submit"] {
+    width: 80px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    transition: all 300ms;
+}
+
+.form_login input[type="submit"]:hover {
+    transform: scale(1.1);
+}
+
+
+/* Estilos del contenedor FLEX del LABEL e INPUT unidos de USERNAME y PASSWORD*/
+.content_label_input {
+    width: 55%;
+    height: 60px;
+    border: 1px solid white;
+    /* Línea blanca debajo del campo de entrada */
+    border-radius: 5px;
+    margin: 0px auto;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+/* Estilos de los LABEL IMG */
+.content_label_input label {
+    width: 15%;
+    padding: 10px;
+    border-right: 1px solid white;
+
+}
+
+/* Estilos de los INPUTS */
+.content_label_input input {
+    width: 85%;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    /* Sin color de fondo */
+    color: white;
+    font-size: 0.9em;
+}
+
+/* Estilos del placeholder */
+.form_login input::placeholder {
+    color: white;
+}
+
+
+
+
+/* ESTILOS ADICIONALES DE PAGINA "REGISTRO" */
+
+.boton_registro {
+    width: 100px !important;
+}
+
+.titulo_registro {
+    text-align: center;
+    color: white;
+    padding: 50px 0px 30px 0px;
+}
+
+.info_fecha {
+    font-size: 0.9em;
+}
+
+
+.principal_content .info_redireccion_1 {
+    margin-top: 50px;
+}
+
+/* Agrega estilos para el input de tipo date */
+input[type="date"] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+}
+
+/* Oculta el icono del calendario predeterminado */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+
+/* ESTILOS ADICIONALES DE PAGINA "OLVIDO CLAVE" */
+
+.titulo_ingresar_email {
+    padding: 70px 0px 50px 0px;
+    margin: 0px auto;
+    color: white;
+    text-align: center;
+}
+
+.info_validar_email {
+    width: 50%;
+    margin: 0px auto;
+    padding-bottom: 30px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+
+}
+
+
+/*INICIO DE SECCIÒN*/
+/*"RESPONSIVE" */
+/*MEDIA QUERYS*/
+
+@media (max-width: 1190px) {
+
+    /*Estilos del contenedor principal, que sobre el body y con RGBA contiene el formulario*/
+    .principal_content {
+        width: 50%;
+    }
+
+}
+
+@media (max-width: 965px) {
+
+    /* Estilos del contenedor FLEX del LABEL e INPUT unidos de USERNAME y PASSWORD*/
+    .content_label_input {
+        width: 70%;
+        height: 60px;
+    }
+}
+
+@media (max-width: 765px) {
+
+    /* Estilos del contenedor FLEX del LABEL e INPUT unidos de USERNAME y PASSWORD*/
+    .content_label_input {
+        width: 80%;
+    }
+}
+
+@media (max-width: 665px) {
+
+    /*Estilos del contenedor principal, que sobre el body y con RGBA contiene el formulario*/
+    .principal_content {
+        width: 90%;
+    }
+
+    /* Estilos del contenedor FLEX del LABEL e INPUT unidos de USERNAME y PASSWORD*/
+    .content_label_input {
+        width: 70%;
+    }
+
+}

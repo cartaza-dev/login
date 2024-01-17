@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./assets/images/enter.png">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <title>Iniciar sesión</title>
+
+  <!--Pendientes:
+  -Hacer responsive
+  -Crear script para cambiar de color el ojo de oculta y muestra la clave
+  -Cambiar algunos estilos, como el del boton y darle mas personalidad y dinamismo.
+  -->
+
+</head>
+
+<!--El body contiene la imagen del fondo con propiedad Background-image. -->
+
+<body>
+
+  <!--CONTENEDOR PRINCIPAL con fondo RGBA y formulario de login-->
+  <div class="principal_content">
+
+    <h2 class="titulo">Ingresa a tu cuenta</h2>
+
+    <!--FORMULARIO DE LOGIN-->
+    <form action="/procesar_formulario" method="post" class="form_login">
+
+      <!--Contentedor div del label e input de USERNAME -->
+      <div class="content_label_input">
+        <label for="username">
+          <img src="./assets/images/user_icon.png" alt="icono de usuario">
+        </label>
+        <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required>
+      </div>
+
+      <!--Contentedor div del label e input de PASSWORD -->
+      <div class="content_label_input">
+        <label for="password">
+          <img src="./assets/images/candado.png" alt="icono de usuario">
+        </label>
+        <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+      </div>
+
+      <!--Boton de ingresar-->
+      <input type="submit" value="Ingresar">
+    </form>
+
+    <!--Seccion que redirecciona a OLVIDO DE CLAVE y REGISTRO-->
+    <div class="info_redireccion">
+      <p> ¿Olvidaste tu contraseña? <a href="olvido_clave.html"> Ingresa aqui</a></p>
+      <p> ¿No estas registrado? <a href="registro.html">Registrate</a></p>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
