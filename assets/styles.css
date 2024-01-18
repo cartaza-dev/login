@@ -98,7 +98,6 @@ input[type="password"]::-webkit-reveal {
     width: 55%;
     height: 60px;
     border: 1px solid white;
-    /* Línea blanca debajo del campo de entrada */
     border-radius: 5px;
     margin: 0px auto;
     display: flex;

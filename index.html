@@ -9,8 +9,6 @@
   <title>Iniciar sesión</title>
 
   <!--Pendientes:
-  -Hacer responsive
-  -Crear script para cambiar de color el ojo de oculta y muestra la clave
   -Cambiar algunos estilos, como el del boton y darle mas personalidad y dinamismo.
   -->
 
@@ -36,13 +34,17 @@
         <input type="text" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required>
       </div>
 
-      <!--Contentedor div del label e input de PASSWORD -->
-      <div class="content_label_input">
-        <label for="password">
-          <img src="./assets/images/candado.png" alt="icono de usuario">
-        </label>
-        <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
-      </div>
+    <!-- Contentedor div del label e input de PASSWORD -->
+    <div class="content_label_input">
+      <label for="password">
+        <img src="./assets/images/candado.png" alt="icono de usuario">
+      </label>
+      <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
+    </div>
+    <input type="checkbox" onclick="toggle()" id="checkbox"> 
+    <label for="checkbox">Mostrar contraseña</label> <br>
+
+
 
       <!--Boton de ingresar-->
       <input type="submit" value="Ingresar">
@@ -57,6 +59,19 @@
   </div>
 
 
+<!--Al clickear el checkbox, cambia el input de tipo PASSWORD a TEXT, 
+    por lo que muestra el contenido-->
+  <script>
+        function toggle() {
+            var temp = document.getElementById("password");
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+</script>
 </body>
 
 </html>
