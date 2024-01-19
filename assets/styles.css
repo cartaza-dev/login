@@ -71,7 +71,7 @@ body {
 input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-eye,
 input[type="password"]::-webkit-reveal {
-  display: none;
+    display: none;
 }
 
 
@@ -161,10 +161,11 @@ input[type="date"] {
     font-size: 1em;
 }
 
-/* Oculta el icono del calendario predeterminado */
+/* Estilo del icono calendario del navegador */
 input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
+padding: 20px;
 }
+
 
 
 /* ESTILOS ADICIONALES DE PAGINA "OLVIDO CLAVE" */
