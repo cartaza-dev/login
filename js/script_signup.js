@@ -59,20 +59,21 @@ function signup(event) {
         body: JSON.stringify(miUsuario),
     })
         .then(response => {
+            if (response.status === 200 || response.status === 201) {
+
                 //Seleccionamos el div vacìo para añadirle mensaje de registro exitoso.
                 registro_exitoso = document.getElementById('registro_exitoso');
                 registro_exitoso.textContent = "Te has registrado correctamente. Recibiràs un correo para validar tu cuenta.";
 
-        })
-        .then(data => {
-            console.log('Respuesta del servidor:', data);
-            // Puedes realizar acciones adicionales después de recibir la respuesta del servidor
+                return response.json();
+            } else {
+                // Realizar acciones si hay un error
+                throw new Error('Error en la solicitud. Código de estado: ' + response.status);
+            }
         })
         .catch(error => {
             console.error('Error al enviar la solicitud:', error.message);
             alert("NO SE HA GENERADO EL REGISTRO. VERIFICA LOS DATOS INGRESADOS");
-
-
             /*registro_fallido = document.getElementById('registro_fallido');
             registro_fallido.textContent = "No te has registrado correctamente. Revisa por favor los datos ingresados";*/
         });
