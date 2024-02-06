@@ -66,10 +66,7 @@ function signup(event) {
                 registro_exitoso.textContent = "Te has registrado correctamente. Recibiràs un correo para validar tu cuenta.";
 
                 return response.json();
-            } else {
-                // Realizar acciones si hay un error
-                throw new Error('Error en la solicitud. Código de estado: ' + response.status);
-            }
+            } 
         })
         .catch(error => {
             console.error('Error al enviar la solicitud:', error.message);
