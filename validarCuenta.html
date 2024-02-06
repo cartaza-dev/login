@@ -1,0 +1,128 @@
+<!--Esta pàgina tiene como finalidad, enviar al servidor el token recibido vìa correo electrònico,
+para validarlo y activar la cuenta registrada previamente.-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar Cuenta</title>
+    <link rel="stylesheet" href="./assets/styles_validarcuenta.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body class="body_validar_cuenta">
+
+    <!-- En caso de que el token recibido vìa mail sea correcto, se mostrarà en el h1 de este div
+la leyenda "Has validado correctamente tu cuenta, ya puedes iniciar sesiòn."-->
+    <div class="content">
+        <h1 id="validacion_exitosa"
+            style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center;  padding: 20px 0px;">
+        </h1>
+    </div>
+    <!-- En caso de que el token recibido vìa mail no sea vàlido o estè expirado, se mostrarà en el h1 de este div
+la leyenda "No se ha podido validar tu cuenta, por favor ponte en contacto con nosotros."-->
+    <div class="content"
+        style="margin: 0px auto; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <h1 id="validacion_fallida"
+            style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 20px 0px;">
+        </h1>
+
+        <h5 id="texto_solicitud_nuevo_token" style=" padding: 20px 0px; font-size: 1em;"></h5>
+
+
+        <!--Formulario para solicitar el REENVIO de un token de validacion-->
+        <form action="" method="POST" id="formulario_reenvio_correo_validacion"
+            class="formulario_reenvio_correo_validacion">
+
+            <input type="email" name="email" id="email" placeholder="Ingresa tu email" required>
+            <input type="submit" value="Enviar correo de validacion" id="submit">
+
+        </form>
+    </div>
+
+
+    <!--Incorporamos en el html el script correspondiente que envìa el token al backend para validarlo
+y asi poder activar la cuenta-->
+    <script>
+
+
+        // Extraemos el token de la URL
+        function obtenerTokenDeURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('token');
+        }
+
+        // Enviamos el token extraido previamente de la url, al servidor para validarlo.
+        function validarTokenEnBackend(token) {
+
+            // Utilizamos una solicitud AJAX.
+            $.ajax({
+                url: 'http://localhost:8080/validar-cuenta', //URL DEL BACKEND
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ token: token }),
+                //Si obtenemos un OK ->
+                success: function (response) {
+                    console.log('Token validado correctamente:', response);
+
+                    //Seleccionamos el h1 correspondiente
+                    validacion_exitosa = document.getElementById('validacion_exitosa');
+                    //Añadimos el texto de confirmacion de la validaciòn del token.
+                    validacion_exitosa.textContent = "Has validado correctamente tu cuenta, ya puedes iniciar sesiòn.";
+
+                },
+                //Si obtenemos un ERROR ->
+                error: function (error) {
+                    console.error('Error al validar el token:', error);
+                    //Seleccionamos el H1 correspondiente
+                    validacion_fallida = document.getElementById('validacion_fallida');
+                    //Seleccionamos el H5 correspondiente
+                    texto_solicitar_nuevo_token = document.getElementById('texto_solicitud_nuevo_token');
+
+                    //Añadimos el TITULO de falla de validaciòn de token.
+                    validacion_fallida.textContent = "No se ha podido validar tu cuenta";
+                    //Añadimos el TEXTO de solicitar nuevo token.
+                    texto_solicitar_nuevo_token.textContent = "Por favor ingresa tu correo electrònico para solicitar un nuevo correo de validaciòn.";
+
+                    //Seleccionamos el FORM correspondiente
+                    $('#formulario_reenvio_correo_validacion').addClass('mostrar_formulario');
+
+
+                    /*
+                                        En las siguientes lineas de codigo crearemos, sòlo si el token ha expirado, la posibilidad de reenviar
+                                        el correo de validaciòn, por lo que creamos un input para que el usuario ingrese su correo electrònico
+                                        y un input que cumple la funciòn de boton para enviar el email al backend para generar el reenvìo.
+                                        Luego le asignamos los atributos necesarios y lo añadimos al formulario.
+                                      
+                                        var input_ingresar_email = document.createElement('input');
+                                        input_ingresar_email.type = 'text';
+                                        input_ingresar_email.name = 'email';
+                                        input_ingresar_email.placeholder = 'Ingresa tu email';
+                    
+                                        var botonEnvioValidacion = document.createElement('input');
+                                        botonEnvioValidacion.type = "submit";
+                                        botonEnvioValidacion.value = 'Enviar correo validacion';
+                    
+                                        // Añadimos los inputs al formulario.
+                                        formulario_reenvio_correo_validacion.appendChild(input_ingresar_email);
+                                        formulario_reenvio_correo_validacion.appendChild(botonEnvioValidacion);
+                    */
+                }
+            });
+        }
+
+        // Obtenemos el token de la URL
+        const token = obtenerTokenDeURL();
+
+        // Validamos el token en el backend
+        if (token) {
+            validarTokenEnBackend(token);
+        } else {
+            console.error('Token no encontrado en la URL');
+        }
+    </script>
+
+</body>
+
+</html>
