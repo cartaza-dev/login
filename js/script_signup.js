@@ -62,8 +62,6 @@ function signup(event) {
             //Seleccionamos el div vacìo para añadirle mensaje de registro exitoso.
             registro_exitoso = document.getElementById('registro_exitoso');
             registro_exitoso.textContent = "Te has registrado correctamente. Recibiràs un correo para validar tu cuenta.";
-
-            return response.json();
         } else {
             throw new Error('Error en la solicitud: ' + response.statusText);
         }
@@ -71,7 +69,6 @@ function signup(event) {
     .catch(error => {
         console.error('Error al enviar la solicitud:', error.message);
         alert("NO SE HA GENERADO EL REGISTRO. VERIFICA LOS DATOS INGRESADOS");
-        /*registro_fallido = document.getElementById('registro_fallido');
-        registro_fallido.textContent = "No te has registrado correctamente. Revisa por favor los datos ingresados";*/
     });
+    
 }
