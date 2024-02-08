@@ -50,31 +50,28 @@ function signup(event) {
     }
     
     */
-    // Hacer la solicitud al backend para guardar el usuario
     fetch('http://localhost:8080/usuarios/guardarUsuario', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(miUsuario),
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(miUsuario),
+})
+    .then(response => {
+        if (response.status === 200 || response.status === 201) {
+            //Seleccionamos el div vacìo para añadirle mensaje de registro exitoso.
+            registro_exitoso = document.getElementById('registro_exitoso');
+            registro_exitoso.textContent = "Te has registrado correctamente. Recibiràs un correo para validar tu cuenta.";
+
+            return response.json();
+        } else {
+            throw new Error('Error en la solicitud: ' + response.statusText);
+        }
     })
-        .then(response => {
-            if (response.status === 200 || response.status === 201) {
-
-                //Seleccionamos el div vacìo para añadirle mensaje de registro exitoso.
-                registro_exitoso = document.getElementById('registro_exitoso');
-                registro_exitoso.textContent = "Te has registrado correctamente. Recibiràs un correo para validar tu cuenta.";
-
-                return response.json();
-            } 
-        })
-        .catch(error => {
-            console.error('Error al enviar la solicitud:', error.message);
-            alert("NO SE HA GENERADO EL REGISTRO. VERIFICA LOS DATOS INGRESADOS");
-            /*registro_fallido = document.getElementById('registro_fallido');
-            registro_fallido.textContent = "No te has registrado correctamente. Revisa por favor los datos ingresados";*/
-        });
-
-
+    .catch(error => {
+        console.error('Error al enviar la solicitud:', error.message);
+        alert("NO SE HA GENERADO EL REGISTRO. VERIFICA LOS DATOS INGRESADOS");
+        /*registro_fallido = document.getElementById('registro_fallido');
+        registro_fallido.textContent = "No te has registrado correctamente. Revisa por favor los datos ingresados";*/
+    });
 }
-
