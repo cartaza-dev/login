@@ -68,7 +68,13 @@ function signup(event) {
     })
     .catch(error => {
         console.error('Error al enviar la solicitud:', error.message);
-        alert("NO SE HA GENERADO EL REGISTRO. VERIFICA LOS DATOS INGRESADOS");
+        registro_fallido = document.getElementById('registro_fallido');
+        registro_fallido.textContent = "No te has registrado correctamente. Revisa los datos ingresados.";
     });
     
+
+    formulario = document.getElementById('formulario');
+    
+    // Limpiamos el formulario
+    formulario.reset();
 }
