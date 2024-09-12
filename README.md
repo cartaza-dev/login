@@ -4,7 +4,7 @@ Desarrollado por **Carla Artaza**.
 
 [Ingresar al sitio web publicado ](https://cartaza-dev.github.io/login_frontend/)
 
-*¿Que es?* Es un ***sitio web estatico*** que funciona como interfaz de login que se encuentra conectada al backend correspondiente (https://github.com/cartaza-dev/login_backend).
+*¿Que es?* Es un ***sitio web*** que funciona como interfaz de login que se encuentra conectada al backend correspondiente (https://github.com/cartaza-dev/login_backend).
 
 **LOGIN**
 
